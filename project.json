@@ -1,0 +1,22 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Konijima/project-zomboid-studio/master/pzstudio.schema.json",
+    "title": "ZomboLewd",
+    "authors": [],
+    "workshop": {
+        "visibility": "public",
+        "tags": [
+            "Build 41"
+        ],
+        "excludes": []
+    },
+    "mods": {
+        "ZomboLewd": {
+            "name": "ZomboLewd",
+            "description": ""
+        },
+        "ZomboLewdDefeat": {
+            "name": "ZomboLewdDefeat",
+            "description": ""
+        }
+    }
+}
