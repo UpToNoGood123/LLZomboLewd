@@ -17,14 +17,30 @@ local ignoredKeyframeNames = {}
 
 local ipairs = ipairs
 
+---@class ZLAnimationAction : ISBaseTimedAction
+---@field animation unknown
+---@field ignoreHandsWounds boolean
+---@field duration integer
+---@field ended unknown
+---@field currentStage number
+---@field originalPosition {x: number, y: number, z: number}
+---@field originalActor IsoPlayer
+---@field position {x: number, y: number, z: number}
+---@field facing IsoDirections
+---@field waitingStarted boolean
+---@field callbacks {WaitToStart: fun(action: ZLAnimationAction), Update: fun(action: ZLAnimationAction), Perform: fun(action: ZLAnimationAction), Stop: fun(action: ZLAnimationAction), Start: fun(action: ZLAnimationAction)}
+---@field otherActions ZLAnimationAction[]
+---@field isFinalStage boolean
+---@field originalTurnDelta float
 ISAnimationAction = ISBaseTimedAction:derive("ISZomboLewdAnimationAction")
 
 --- Plays an animation using the given animation data
----@param worldobjects unknown[] an array of all nearby objects, usually returned through a contextMenu
+---@param worldobjects? unknown[] an array of all nearby objects, usually returned through a contextMenu
 ---@param actors IsoPlayer[] an array of actors to be played in this scene. Must be IsoPlayer types. First actor will usually be the position where the act takes place
 ---@param animationData unknown the animation object passed from AnimationUtils:getAnimations()
----@param disableCancel boolean: prevents cancellation of this action if set to true (for example, non-consensual actions)
----@param disableWalk boolean: disables the initial walk of the animation (actors will teleport to eachother instantly for the scene)
+---@param disableCancel? boolean: prevents cancellation of this action if set to true (for example, non-consensual actions)
+---@param disableWalk? boolean: disables the initial walk of the animation (actors will teleport to eachother instantly for the scene)
+---@param callbacks? {WaitToStart: fun(action: ZLAnimationAction), Update: fun(action: ZLAnimationAction), Perform: fun(action: ZLAnimationAction), Stop: fun(action: ZLAnimationAction), Start: fun(action: ZLAnimationAction)}
 function AnimationHandler.Play(worldobjects, actors, animationData, disableCancel, disableWalk, callbacks)
 	disableWalk = disableWalk or false
 
