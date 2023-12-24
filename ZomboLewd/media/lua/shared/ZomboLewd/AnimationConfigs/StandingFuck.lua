@@ -6,7 +6,7 @@ table.insert(ZomboLewdAnimationData, {
 	tags = {"StandingFuck", "Sex", "MF", "Anal"},
 	actors = {
 		{
-			gender = "Female",
+			criteria = {"bottom"},
 			stages = {
 				{
 					perform = "StandingFuckF",
@@ -16,6 +16,7 @@ table.insert(ZomboLewdAnimationData, {
 		},
 		{
 			gender = "Male",
+			criteria = {"top"},
 			stages = {
 				{
 					perform = "StandingFuckM",

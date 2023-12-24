@@ -41,7 +41,8 @@ ISAnimationAction = ISBaseTimedAction:derive("ISZomboLewdAnimationAction")
 ---@param disableCancel? boolean: prevents cancellation of this action if set to true (for example, non-consensual actions)
 ---@param disableWalk? boolean: disables the initial walk of the animation (actors will teleport to eachother instantly for the scene)
 ---@param callbacks? {WaitToStart: fun(action: ZLAnimationAction), Update: fun(action: ZLAnimationAction), Perform: fun(action: ZLAnimationAction), Stop: fun(action: ZLAnimationAction), Start: fun(action: ZLAnimationAction)}
-function AnimationHandler.Play(worldobjects, actors, animationData, disableCancel, disableWalk, callbacks)
+---@param slotCriteria? table<string, boolean>[]
+function AnimationHandler.Play(worldobjects, actors, animationData, disableCancel, disableWalk, callbacks, slotCriteria)
 	disableWalk = disableWalk or false
 
 	if #actors < 1 then return end
@@ -69,9 +70,13 @@ function AnimationHandler.Play(worldobjects, actors, animationData, disableCance
 		end
 	end
 
-	for i, actor in ipairs(actors) do
+	for actor_i, actor in ipairs(actors) do
 		local isFemale = actor:isFemale()
-		local job
+		local bestRole
+		local bestRoleData = {
+			i = 0,
+			metric = -1,
+		}
 		
 		--- Check for a valid position in the animation dependent on gender
 		for i = #availablePositions, 1, -1 do
@@ -83,12 +88,32 @@ function AnimationHandler.Play(worldobjects, actors, animationData, disableCance
 			end
 
 			if canUsePosition then
-				job = table.remove(availablePositions, i)
-				break
+				-- Check if position is a best fit
+				if slotCriteria then
+					local metric = 0
+					for _, criteria in ipairs(availablePositions[i].criteria) do
+						if slotCriteria[actor_i][criteria] then
+							metric = metric + 1
+						end
+					end
+	
+					-- Pick this position if its better
+					if metric > bestRoleData.metric then
+						bestRoleData.metric = metric
+						bestRoleData.i = i
+					end
+				-- First come first serve
+				else
+					bestRoleData.i = i
+					break
+				end
 			end
 		end
 
-		for j, stage in ipairs(job.stages) do
+		-- Select best position for actor
+		bestRole = table.remove(availablePositions, bestRoleData.i)
+
+		for j, stage in ipairs(bestRole.stages) do
 			otherActions[j] = otherActions[j] or {}
 
 			--- Create animation data
@@ -101,7 +126,7 @@ function AnimationHandler.Play(worldobjects, actors, animationData, disableCance
 			action.waitingStarted = false
 			action.callbacks = callbacks
 			action.otherActions = #actors > 1 and otherActions[j]
-			action.isFinalStage = j == #job.stages -- assumes every actor has the same number of stages
+			action.isFinalStage = j == #bestRole.stages -- assumes every actor has the same number of stages
 			action.originalTurnDelta = actor:getTurnDelta()
 
 			if disableCancel == true then
