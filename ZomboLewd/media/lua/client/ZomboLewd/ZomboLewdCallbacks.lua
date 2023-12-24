@@ -1,4 +1,4 @@
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 local Callbacks = {}
 
@@ -8,8 +8,8 @@ local IgnoredCommands = {}
 local CommandName = ZomboLewdConfig.CommandName
 
 --- Internal function for listening to server commands
--- @param module string, should be default "ZomboLewd"
--- @param command string should be the name as the command in ZomboLewdCommands
+---@param module string should be default "ZomboLewd"
+---@param command string should be the name as the command in ZomboLewdCommands
 local function onServerCommand(module, command, args)
 	if not isClient() or module ~= CommandName then return end
 
@@ -25,7 +25,7 @@ local function onServerCommand(module, command, args)
 end
 
 --- Sends client commands to the server
--- @param command string should be the name of the command located in ZomboLewdServerCommands
+---@param command string should be the name of the command located in ZomboLewdServerCommands
 function Callbacks:sendClientCommand(command, ...)
 	if not isClient() then return end
 

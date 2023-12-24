@@ -1,4 +1,4 @@
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 local ZombieHandler = {}
 
@@ -35,8 +35,8 @@ local holeType = {
 }
 
 --- Check if this target can be defeated due to armor and clothing
--- @param zombie (not sure what to do with this yet)
--- @param target
+---@param zombie IsoZombie (not sure what to do with this yet)
+---@param target IsoGameCharacter
 local function checkForClothingDamage(zombie, target)
 	--- Copied from ISInventoryPaneContextMenu.lua
 	local wornItems = target:getWornItems()
@@ -97,8 +97,8 @@ local function checkForClothingDamage(zombie, target)
 end
 
 --- Make the zombie do lewd things to the target
--- @param IsoZombie
--- @param IsoPlayer
+---@param zombie IsoZombie
+---@param target IsoPlayer
 local function attemptToDefeatTarget(zombie, target)
 	local isMainHeroFemale = target:isFemale()
 	local zombieIsFemale = zombie:isFemale()

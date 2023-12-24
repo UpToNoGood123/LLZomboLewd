@@ -1,5 +1,5 @@
 --- Activates the client and their modules
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 local Client = {
 	ZombieHandler = require("ZomboLewdDefeat/ZomboLewdDefeatZombieHandler"),

@@ -1,4 +1,4 @@
--- @author QueuedResonance
+---@author QueuedResonance
 
 return function(args)
 	local message = args[1]

@@ -1,5 +1,5 @@
 --- Creates context menus relevant to ZomboLewd
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 require "ISUI/ISContextMenu"
 require "ISUI/ISToolTip"
@@ -15,10 +15,10 @@ local CONTEXT_MENU_MODULES = { --- Add more if there will be more context menu o
 }
 
 --- Internal function that creates a world context menu for masturbation
--- @param player number for which the context menu will be filled for
--- @context Context menu object to be filled for
--- @worldobjects table of world objects nearby the player
--- @test boolean returns whether this context menu is in testing or not
+---@param player number for which the context menu will be filled for
+---@param context unknown Context menu object to be filled for
+---@param worldobjects table of world objects nearby the player
+---@param test boolean returns whether this context menu is in testing or not
 function ContextMenu._createContextMenu(player, context, worldobjects, test)
 	--- Testing purposes
 	if test and ISWorldObjectContextMenu.Test then return true end

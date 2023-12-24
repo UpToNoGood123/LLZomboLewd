@@ -1,4 +1,4 @@
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 local Animations = {}
 
@@ -10,8 +10,8 @@ local pairs = pairs
 local type = type
 
 --- Returns the first occurrence of this element, if not, returned nil
--- @param list: array of the list to search the element in
--- @param element: the object to search for in the list
+---@param list any[] array of the list to search the element in
+---@param element any the object to search for in the list
 function Animations:tableFind(list, element)
 	for i = 1, #list do
 		local item = list[i]
@@ -22,12 +22,12 @@ function Animations:tableFind(list, element)
 end
 
 --- Returns a list of viable animations to fetch depending on factors listed below
--- @param actorCount: number of actors participating in the animation
--- @param males: number of males present in the animation
--- @param females: number of females present in the animation
--- @param tagsToSearch: an array of tags used to return animations containing them (ie. {"Missionary", "Doggystyle"} will return all animations with these tags)
--- @param tagsBlacklist: an array of tags used to ignore animations with these tags (ie. {"Aggressive", "Blowjob"} will ignore animations with these tags)
--- @param allTagsRequired: defaults to true, all tags in tagsToSearch must be valid in the animation to be returned, false will return the animation if one tag is valid
+---@param actorCount number number of actors participating in the animation
+---@param males? number number of males present in the animation
+---@param females? number number of females present in the animation
+---@param tagsToSearch? string[] an array of tags used to return animations containing them (ie. {"Missionary", "Doggystyle"} will return all animations with these tags)
+---@param tagsBlacklist? string[] an array of tags used to ignore animations with these tags (ie. {"Aggressive", "Blowjob"} will ignore animations with these tags)
+---@param allTagsRequired? boolean defaults to true, all tags in tagsToSearch must be valid in the animation to be returned, false will return the animation if one tag is valid
 function Animations:getAnimations(actorCount, males, females, tagsToSearch, tagsBlacklist, allTagsRequired)
 	males = males or -1
 	females = females or -1
@@ -103,10 +103,10 @@ function Animations:getAnimations(actorCount, males, females, tagsToSearch, tags
 end
 
 --- Returns a list of viable animations to fetch depending on factors listed below
--- @param the animation list, usually Animations.Client.Animations
--- @param boolean is it le... female?
--- @param boolean is the act consensual
--- @param boolean can this act be used with zombies
+---@param list unknown the animation list, usually Animations.Client.Animations
+---@param isFemale boolean is it le... female?
+---@param isConsensual boolean is the act consensual
+---@param isZombie boolean can this act be used with zombies
 function Animations:getZLAnimations(list, isFemale, isConsensual, isZombie)
 	local viableAnimations = {}
 

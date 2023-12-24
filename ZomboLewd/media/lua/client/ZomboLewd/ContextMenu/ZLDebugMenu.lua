@@ -1,5 +1,5 @@
 --- Handles debugging stuff for ZomboLewd
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 local ISTimedActionQueue = ISTimedActionQueue
 local ISContextMenu = ISContextMenu
@@ -16,8 +16,8 @@ local string = string
 local ZomboLewd
 
 --- Spawns a comfort survivor at the position of the player
--- @worldobjects table of world objects nearby the player
--- @param IsoPlayer object
+---@param worldobjects table of world objects nearby the player
+---@param playerObj IsoPlayer
 local function spawnComfortSurvivor(worldobjects, playerObj)
 	if isClient() then
 		ZomboLewd.Callbacks:sendClientCommand("SpawnComfortSurvivor")
@@ -27,10 +27,10 @@ local function spawnComfortSurvivor(worldobjects, playerObj)
 end
 
 --- Creates a debug context menu
--- @param ContextMenu object injected from ZomboLewdContextMenu, can access ZomboLewd functionalities with this
--- @param IsoPlayer object
--- @context Context menu object to be filled for
--- @worldobjects table of world objects nearby the player
+---@param ContextMenu unknown injected from ZomboLewdContextMenu, can access ZomboLewd functionalities with this
+---@param playerObj IsoPlayer object
+---@param context unknown menu object to be filled for
+---@param worldobjects table of world objects nearby the player
 return function(ContextMenu, playerObj, context, worldobjects)
 	if not ZomboLewdConfig.ModOptions.options.box2 then return end
 

@@ -1,5 +1,5 @@
 --- Handles asking for sex with players and NPCs
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 local ZomboLewdActType = ZomboLewdActType
 
@@ -11,10 +11,10 @@ local getText = getText
 local string = string
 
 --- Activates when the player clicks ask for seks on the chosen target
--- @worldobjects table of world objects nearby the player
--- @param ContextMenu object injected from ZomboLewdContextMenu, can access ZomboLewd functionalities with this
--- @param IsoPlayer object of the player
--- @param IsoPlayer object of the asked target
+---@param worldobjects table of world objects nearby the player
+---@param contextMenu any injected from ZomboLewdContextMenu, can access ZomboLewd functionalities with this
+---@param requestor IsoPlayer of the player
+---@param target IsoPlayer of the asked target
 local function onAskForSex(worldobjects, contextMenu, requestor, target)
 	local isMainHeroFemale = requestor:isFemale()
 	local isTargetFemale = target:isFemale()
@@ -43,10 +43,10 @@ local function onAskForSex(worldobjects, contextMenu, requestor, target)
 end
 
 --- Creates a ask for seks context menu
--- @param ContextMenu object injected from ZomboLewdContextMenu, can access ZomboLewd functionalities with this
--- @param IsoPlayer object
--- @context Context menu object to be filled for
--- @worldobjects table of world objects nearby the player
+---@param ContextMenu unknown injected from ZomboLewdContextMenu, can access ZomboLewd functionalities with this
+---@param playerObj IsoPlayer
+---@param context unknown menu object to be filled for
+---@param worldobjects table of world objects nearby the player
 return function(ContextMenu, playerObj, context, worldobjects)
 	if not ZomboLewdConfig.ModOptions.options.box1 then return end
 

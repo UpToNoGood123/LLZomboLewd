@@ -1,6 +1,6 @@
 --- Animation handler for all lewd things
 --- future todo task for me in the far future: have support for 3somes, 4somes, possibly more if we want to be extra steamy
--- @author QueuedResonance
+---@author QueuedResonance
 
 require "TimedActions/ISBaseTimedAction"
 
@@ -20,11 +20,11 @@ local ipairs = ipairs
 ISAnimationAction = ISBaseTimedAction:derive("ISZomboLewdAnimationAction")
 
 --- Plays an animation using the given animation data
--- @param worldobjects: an array of all nearby objects, usually returned through a contextMenu
--- @param actors: an array of actors to be played in this scene. Must be IsoPlayer types. First actor will usually be the position where the act takes place
--- @param animationData: the animation object passed from AnimationUtils:getAnimations()
--- @param disableCancel boolean: prevents cancellation of this action if set to true (for example, non-consensual actions)
--- @param disableWalk boolean: disables the initial walk of the animation (actors will teleport to eachother instantly for the scene)
+---@param worldobjects unknown[] an array of all nearby objects, usually returned through a contextMenu
+---@param actors IsoPlayer[] an array of actors to be played in this scene. Must be IsoPlayer types. First actor will usually be the position where the act takes place
+---@param animationData unknown the animation object passed from AnimationUtils:getAnimations()
+---@param disableCancel boolean: prevents cancellation of this action if set to true (for example, non-consensual actions)
+---@param disableWalk boolean: disables the initial walk of the animation (actors will teleport to eachother instantly for the scene)
 function AnimationHandler.Play(worldobjects, actors, animationData, disableCancel, disableWalk, callbacks)
 	disableWalk = disableWalk or false
 
@@ -274,8 +274,8 @@ function ISAnimationAction:start()
 end
 
 --- Determine animation events when played. Useful for sounds, saucy effects, or misc things
--- @param event string value determining the type of animation
--- @param parameter string that is the value given from the xml file
+---@param event string value determining the type of animation
+---@param parameter string that is the value given from the xml file
 function ISAnimationAction:animEvent(event, parameter)
 	if not AnimationHandler.EventMarkerModules[event] and not ignoredKeyframeNames[event] then
 		--- See if we can lazy load it (Another mod might have added more event markers)
@@ -292,9 +292,9 @@ function ISAnimationAction:animEvent(event, parameter)
 end
 
 --- Creates a new animation object with inheritance from ISBaseTimedAction
--- @param IsoPlayer character object
--- @param string of the animation to be played on this actor
--- @param seconds in how long the act should be
+---@param character IsoPlayer
+---@param animation string
+---@param duration number seconds in how long the act should be
 function ISAnimationAction:new(character, animation, duration)
 	local object = {
 		character = character,

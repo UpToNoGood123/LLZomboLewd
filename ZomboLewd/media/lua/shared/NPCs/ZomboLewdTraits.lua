@@ -1,5 +1,5 @@
 --- Adds extra traits for the players to choose from
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 require('NPCs/MainCreationMethods')
 

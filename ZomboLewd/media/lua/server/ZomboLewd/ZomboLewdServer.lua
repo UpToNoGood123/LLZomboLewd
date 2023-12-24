@@ -1,5 +1,5 @@
 --- Activates the server and their modules
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 local Server = {
 	Callbacks = require("ZomboLewd/ZomboLewdServerCallbacks"),

@@ -1,5 +1,5 @@
 --- Handles a player's own masturbation tendencies in their own context menu
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 local ISContextMenu = ISContextMenu
 local ISToolTip = ISToolTip
@@ -12,10 +12,10 @@ local string = string
 local ipairs = ipairs
 
 --- Creates a masturbation context menu
--- @param ContextMenu object injected from ZomboLewdContextMenu, can access ZomboLewd functionalities with this
--- @param IsoPlayer object
--- @context Context menu object to be filled for
--- @worldobjects table of world objects nearby the player
+---@param ContextMenu unknown injected from ZomboLewdContextMenu, can access ZomboLewd functionalities with this
+---@param playerObj IsoPlayer
+---@param context unknown menu object to be filled for
+---@param worldobjects table of world objects nearby the player
 return function(ContextMenu, playerObj, context, worldobjects)
 	local isFemale = playerObj:isFemale()
 	local animationList = ContextMenu.Client.AnimationUtils:getAnimations(1, isFemale and 0 or 1, isFemale and 1 or 0, {"Masturbation"})

@@ -1,4 +1,4 @@
--- @author QueuedResonance 2022
+---@author QueuedResonance 2022
 
 local ZombieHandler = {}
 
@@ -8,7 +8,7 @@ local IsoPlayer = IsoPlayer
 local instanceof = instanceof
 
 --- Zombies are unable to be played animations directly, so we need to spawn a dummy survivor to act like the zombie
--- @param IsoZombie of the zombie we want to convert
+---@param zombie IsoZombie of the zombie we want to convert
 function ZombieHandler:convertZombieToSurvivor(zombie)
 	if not instanceof(zombie, "IsoZombie") then return end
 
