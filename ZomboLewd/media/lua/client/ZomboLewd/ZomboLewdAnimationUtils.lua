@@ -2,7 +2,6 @@
 
 local Animations = {}
 
-local ZomboLewdActType = ZomboLewdActType
 local ZomboLewdAnimationData = ZomboLewdAnimationData
 
 local string = string

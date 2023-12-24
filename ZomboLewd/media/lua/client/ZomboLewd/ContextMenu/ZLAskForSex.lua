@@ -1,7 +1,6 @@
 --- Handles asking for sex with players and NPCs
 ---@author QueuedResonance 2022
 
-local ZomboLewdActType = ZomboLewdActType
 
 local ISWorldObjectContextMenu = ISWorldObjectContextMenu
 local ISContextMenu = ISContextMenu

@@ -4,7 +4,6 @@ local ZombieHandler = {}
 
 local ZomboLewd = require("ZomboLewd/ZomboLewd")
 
-local ZomboLewdActType = ZomboLewdActType
 local ZomboLewdDefeatConfig = ZomboLewdDefeatConfig
 
 local ISTimedActionQueue = ISTimedActionQueue

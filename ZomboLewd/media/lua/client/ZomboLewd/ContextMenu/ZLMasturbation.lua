@@ -5,7 +5,6 @@ local ISContextMenu = ISContextMenu
 local ISToolTip = ISToolTip
 
 local ZomboLewdConfig = ZomboLewdConfig
-local ZomboLewdActType = ZomboLewdActType
 
 local getText = getText
 local string = string
