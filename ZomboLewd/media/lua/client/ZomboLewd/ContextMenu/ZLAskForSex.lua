@@ -61,10 +61,5 @@ return function(ContextMenu, playerObj, context, worldobjects)
 	if clickedPlayer then
 		--- Create an option in the right-click menu, and then creates a submenu for that
 		context:addOption(getText("ContextMenu_Ask_For_Sex"), worldobjects, onAskForSex, ContextMenu, playerObj, clickedPlayer)
-
-		--- Placeholder, but can't ask for sex if they are the same gender
-		if playerObj:isFemale() == clickedPlayer:isFemale() then
-			context:removeLastOption()
-		end
 	end
 end

@@ -67,27 +67,27 @@ function Animations:getAnimations(actorCount, males, females, tagsToSearch, tags
 				end
 			end
 
-			local maleCount = 0
-			local femaleCount = 0
+			local requiredMales = 0
+			local requiredFemales = 0
 
-			--- Check if the actor gender count is right
+			--- Count number of required genders in the animation
 			for actorIndex = 1, #animation.actors do
 				local actor = animation.actors[actorIndex]
 				if actor.gender == "Male" then
-					maleCount = maleCount + 1
+					requiredMales = requiredMales + 1
 				elseif actor.gender == "Female" then
-					femaleCount = femaleCount + 1
+					requiredFemales = requiredFemales + 1
 				end
 			end
 
 			if males >= 0 then
-				if maleCount ~= males then
+				if requiredMales > males then
 					canAdd = false
 				end
 			end
 			
 			if females >= 0 then
-				if femaleCount ~= females then
+				if requiredFemales > females then
 					canAdd = false
 				end
 			end
