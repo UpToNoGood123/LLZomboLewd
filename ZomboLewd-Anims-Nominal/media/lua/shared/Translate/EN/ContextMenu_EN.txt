@@ -1,0 +1,16 @@
+ContextMenu_EN = {
+
+	ContextMenu_Nominal_Quick_Fingering = "Quick Fingering",
+	ContextMenu_Nominal_Regular_Fingering = "Regular Fingering",
+	ContextMenu_Nominal_Relaxed_Fingering = "Relaxed Fingering",
+	ContextMenu_Nominal_Sitting_Regular_Fingering = "Sitting Regular Fingering",
+	ContextMenu_Nominal_Sitting_Relaxed_Fingering = "Sitting Relaxed Fingering",
+
+	ContextMenu_Nominal_Quick_Wank = "Quick Wank",
+	ContextMenu_Nominal_Regular_Wank = "Regular Wank",
+	ContextMenu_Nominal_Relaxed_Wank = "Relaxed Wank",
+	ContextMenu_Nominal_Sitting_Regular_Wank = "Sitting Regular Wank",
+	ContextMenu_Nominal_Sitting_Relaxed_Wank = "Sitting Relaxed Wank"
+
+
+}
