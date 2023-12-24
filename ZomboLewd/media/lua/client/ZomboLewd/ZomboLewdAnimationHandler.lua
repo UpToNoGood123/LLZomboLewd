@@ -72,37 +72,44 @@ function AnimationHandler.Play(worldobjects, actors, animationData, disableCance
 			end
 		end
 
-		--- Create animation data
-		local action = ISAnimationAction:new(actor, job.stages[1].perform, job.stages[1].duration)
-		action.currentStage = 1
-		action.originalPosition = {x = actor:getX(), y = actor:getY(), z = actor:getZ()}
-		action.originalActor = actors[1]
-		action.position = {x = x, y = y, z = z}
-		action.facing = #actors > 1 and facing
-		action.waitingStarted = false
-		action.callbacks = callbacks
-		action.otherActions = #actors > 1 and otherActions
+		for j, stage in ipairs(job.stages) do
+			otherActions[j] = otherActions[j] or {}
 
-		if disableCancel == true then
-			action.stopOnRun = false
-			action.stopOnAim = false
+			--- Create animation data
+			local action = ISAnimationAction:new(actor, stage.perform, stage.duration)
+			action.currentStage = j
+			action.originalPosition = {x = actor:getX(), y = actor:getY(), z = actor:getZ()}
+			action.originalActor = actors[1]
+			action.position = {x = x, y = y, z = z}
+			action.facing = #actors > 1 and facing
+			action.waitingStarted = false
+			action.callbacks = callbacks
+			action.otherActions = #actors > 1 and otherActions[j]
+			action.isFinalStage = j == #job.stages -- assumes every actor has the same number of stages
+			action.originalTurnDelta = actor:getTurnDelta()
+
+			if disableCancel == true then
+				action.stopOnRun = false
+				action.stopOnAim = false
+			end
+
+			table.insert(otherActions[j], action)
+			
+			if disableWalk then
+				ISTimedActionQueue.clear(action.character)
+			end
+			
 		end
-
-		table.insert(otherActions, action)
 	end
-
+	
 	--- Activate the animations simultaneously
-	for i = 1, #otherActions do
-		local otherAction = otherActions[i]
-
-		if disableWalk then
-			ISTimedActionQueue.clear(otherAction.character)
+	for i, stage in ipairs(otherActions) do
+		for j, action in ipairs(stage) do
+			ISTimedActionQueue.add(action)
 		end
-		
-		ISTimedActionQueue.add(otherAction)
 	end
 
-	return otherActions
+	-- return otherActions
 end
 
 function ISAnimationAction:isValid()
@@ -115,18 +122,20 @@ function ISAnimationAction:waitToStart()
 	--- true = delay the timedaction
 
 	local continueWaiting = self.character:shouldBeTurning()
-
+	-- self.character:setTurnDelta(1000)
+	
 	--- Check if other characters are still turning towards the original actor
 	if self.otherActions then
 		local otherActionLength = #self.otherActions
-
+		
 		if otherActionLength > 1 then
 			for i = 1, otherActionLength do
 				local otherAction = self.otherActions[i]
-
+				
 				--- Wait till the other actors has finished their turning
 				if otherAction.character ~= self.character then
-					self.character:faceThisObject(otherAction.character)
+					-- self.character:faceThisObject(otherAction.character)
+					self.character:setDir(self.facing)
 				
 					if(otherAction.waitingStarted == false or otherAction.character:shouldBeTurning() == true) then
 						continueWaiting = true

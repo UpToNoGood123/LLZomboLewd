@@ -210,14 +210,16 @@ local function attemptToDefeatTarget(zombie, target)
 					cleanup()
 				end,
 				Perform = function(action)
-					if target:HasTrait("Necrophiliac") then
-						local bodyDamage = target:getBodyDamage()
-						local unhappiness = bodyDamage:getUnhappynessLevel()
+					if action.isFinalStage then
+						if target:HasTrait("Necrophiliac") then
+							local bodyDamage = target:getBodyDamage()
+							local unhappiness = bodyDamage:getUnhappynessLevel()
 
-						bodyDamage:setUnhappynessLevel(unhappiness - 20)
+							bodyDamage:setUnhappynessLevel(unhappiness - 20)
+						end
+
+						cleanup()
 					end
-
-					cleanup()
 				end
 			})
 
