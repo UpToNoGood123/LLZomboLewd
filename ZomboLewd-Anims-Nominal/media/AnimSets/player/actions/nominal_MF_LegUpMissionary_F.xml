@@ -15,4 +15,19 @@
 		<boneName>Dummy01</boneName>
 		<weight>1.0</weight>
 	</m_SubStateBoneWeights>
+	<m_Events>
+		<m_EventName>Slap</m_EventName>
+		<m_TimePc>0.165</m_TimePc>
+		<m_ParameterValue></m_ParameterValue>
+	</m_Events>
+	<m_Events>
+		<m_EventName>Slap</m_EventName>
+		<m_TimePc>0.5</m_TimePc>
+		<m_ParameterValue></m_ParameterValue>
+	</m_Events>
+	<m_Events>
+		<m_EventName>Slap</m_EventName>
+		<m_TimePc>0.833</m_TimePc>
+		<m_ParameterValue></m_ParameterValue>
+	</m_Events>
 </animNode>
