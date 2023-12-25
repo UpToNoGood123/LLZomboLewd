@@ -134,7 +134,7 @@ local function attemptToDefeatTarget(zombie, target)
 			end
 		
 			--- Choose random animation as a test
-			local animationList = ZomboLewd.AnimationUtils:getAnimations(2, maleCount, femaleCount, {"Sex"})
+			local animationList = ZomboLewd.AnimationUtils:getAnimations(2, maleCount, femaleCount, {"Sex", "Defeated"}, nil, true)
 			local index = ZombRand(1, #animationList + 1)
 			local chosenAnimation = animationList[index]
 
