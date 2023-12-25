@@ -6,7 +6,7 @@ table.insert(ZomboLewdAnimationData, {
 	tags = {"Intercourse", "MF", "Anal", "Doggy", "Rough", "Sex"},
 	actors = {
 		{
-			criteria = {"bottom"},
+			criteria = {"Receive"},
 			stages = {
 				{
 					perform = "nominal_MF_RoughDoggy_F",
@@ -16,7 +16,7 @@ table.insert(ZomboLewdAnimationData, {
 		},
 		{
 			gender = "Male",
-			criteria = {"top"},
+			criteria = {"Give"},
 			stages = {
 				{
 					perform = "nominal_MF_RoughDoggy_M",

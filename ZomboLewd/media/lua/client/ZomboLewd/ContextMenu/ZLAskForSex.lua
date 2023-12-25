@@ -53,13 +53,9 @@ local function onAskForSex(worldobjects, contextMenu, requestor, target, tags, p
 		[1] = {}, -- requestor (i.e., player)
 		[2] = {} -- target
 	}
-	if playerRole == "Give" then
-		criteria[1]["top"] = true
-		criteria[2]["bottom"] = true
-	else
-		criteria[1]["bottom"] = true
-		criteria[2]["top"] = true
-	end
+	local targetRole = (playerRole == "Give") and "Receive" or "Give"
+	criteria[1][playerRole] = true
+	criteria[2][targetRole] = true
 
 	--- Choose random animation as a test
 	local animationList = contextMenu.Client.AnimationUtils:getAnimations(2, maleCount, femaleCount, tags, tagBlacklist, true)
