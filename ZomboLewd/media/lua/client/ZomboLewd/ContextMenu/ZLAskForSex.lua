@@ -109,12 +109,19 @@ return function(ContextMenu, playerObj, context, worldobjects)
 
 		-- For each role, nest Position options
 		for _, position in ipairs(positions) do
-			local optionPosition = menuRole:addOption(getText("ContextMenu_" .. position), worldobjects, onAskForSex, ContextMenu, playerObj, clickedPlayer, {position}, role)
+			local optionPosition = menuPosition:addOption(getText("ContextMenu_" .. position), worldobjects, onAskForSex, ContextMenu, playerObj, clickedPlayer, {position}, role)
 
 			-- Block vaginal option if both characters are male
+			-- or if receiver is male
+			-- or if giver is female
 			-- Better to build a table of options dependent on the genders rather than account for it after
-			if position == "Vaginal" and not playerObj:isFemale() and not clickedPlayer:isFemale() then
-				optionPosition.notAvailable = true
+			if position == "Vaginal" then
+				if not playerObj:isFemale() and not clickedPlayer:isFemale() or
+				   role == "Receive" and not playerObj:isFemale() or
+				   role == "Give" and playerObj:isFemale()
+				then
+					optionPosition.notAvailable = true
+				end
 			end
 		end
 	end
