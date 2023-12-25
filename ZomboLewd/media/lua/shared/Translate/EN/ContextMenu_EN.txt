@@ -8,7 +8,7 @@ ContextMenu_EN = {
 	ContextMenu_Ask_For_Sex = "Ask to have sex",
 	ContextMenu_Give = "Give",
 	ContextMenu_Receive = "Receive",
-	ContextMenu_Blowjob = "Blowjob",
+	ContextMenu_Oral = "Oral",
 	ContextMenu_Vaginal = "Vaginal",
 	ContextMenu_Anal = "Anal",
 

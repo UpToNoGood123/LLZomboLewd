@@ -25,7 +25,7 @@ end
 ---@param males? number number of males present in the animation
 ---@param females? number number of females present in the animation
 ---@param tagsToSearch? string[] an array of tags used to return animations containing them (ie. {"Missionary", "Doggystyle"} will return all animations with these tags)
----@param tagsBlacklist? string[] an array of tags used to ignore animations with these tags (ie. {"Aggressive", "Blowjob"} will ignore animations with these tags)
+---@param tagsBlacklist? string[] an array of tags used to ignore animations with these tags (ie. {"Aggressive", "Oral"} will ignore animations with these tags)
 ---@param allTagsRequired? boolean defaults to true, all tags in tagsToSearch must be valid in the animation to be returned, false will return the animation if one tag is valid
 function Animations:getAnimations(actorCount, males, females, tagsToSearch, tagsBlacklist, allTagsRequired)
 	males = males or -1

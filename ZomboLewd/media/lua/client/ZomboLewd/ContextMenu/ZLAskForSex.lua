@@ -15,7 +15,7 @@ local roles = {
 }
 
 local positions = {
-	"Blowjob",
+	"Oral",
 	"Vaginal",
 	"Anal",
 }
