@@ -1,0 +1,15 @@
+ContextMenu_CN = {
+
+	ContextMenu_Nominal_Quick_Fingering = "快速指法",
+	ContextMenu_Nominal_Regular_Fingering = "正常指法",
+	ContextMenu_Nominal_Relaxed_Fingering = "放松指法",
+	ContextMenu_Nominal_Sitting_Regular_Fingering = "坐立正常指法",
+	ContextMenu_Nominal_Sitting_Relaxed_Fingering = "坐立放松指法",
+	ContextMenu_Nominal_Quick_Wank = "快速手淫",
+	ContextMenu_Nominal_Regular_Wank = "正常手淫",
+	ContextMenu_Nominal_Relaxed_Wank = "放松手淫",
+	ContextMenu_Nominal_Sitting_Regular_Wank = "坐着正常手淫",
+	ContextMenu_Nominal_Sitting_Relaxed_Wank = "坐着放松手淫".
+
+
+}
