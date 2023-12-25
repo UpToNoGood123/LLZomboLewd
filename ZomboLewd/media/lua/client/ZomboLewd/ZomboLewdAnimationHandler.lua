@@ -89,23 +89,17 @@ function AnimationHandler.Play(worldobjects, actors, animationData, disableCance
 
 			if canUsePosition then
 				-- Check if position is a best fit
-				if slotCriteria then
-					local metric = 0
-					for _, criteria in ipairs(availablePositions[i].criteria) do
-						if slotCriteria[actor_i][criteria] then
-							metric = metric + 1
-						end
+				local metric = 0
+				for _, criteria in ipairs(availablePositions[i].criteria) do
+					if slotCriteria and slotCriteria[actor_i][criteria] then
+						metric = metric + 1
 					end
-	
-					-- Pick this position if its better
-					if metric > bestRoleData.metric then
-						bestRoleData.metric = metric
-						bestRoleData.i = i
-					end
-				-- First come first serve
-				else
+				end
+
+				-- Pick this position if its better
+				if metric > bestRoleData.metric then
+					bestRoleData.metric = metric
 					bestRoleData.i = i
-					break
 				end
 			end
 		end
