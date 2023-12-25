@@ -6,6 +6,11 @@ ContextMenu_EN = {
 	ContextMenu_Masturbation_StrokeCock = "Stroke Cock",
 
 	ContextMenu_Ask_For_Sex = "Ask to have sex",
+	ContextMenu_Give = "Give",
+	ContextMenu_Receive = "Receive",
+	ContextMenu_Oral = "Oral",
+	ContextMenu_Vaginal = "Vaginal",
+	ContextMenu_Anal = "Anal",
 
 	ContextMenu_Debug_Option = "Debug - ZomboLewd",
 	ContextMenu_Debug_Spawn_Comfort_Survivor = "Spawn Comfort Survivor",

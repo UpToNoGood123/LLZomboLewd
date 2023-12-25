@@ -9,12 +9,24 @@ local ISToolTip = ISToolTip
 local getText = getText
 local string = string
 
+local roles = {
+	"Give",
+	"Receive"
+}
+
+local positions = {
+	"Oral",
+	"Vaginal",
+	"Anal",
+}
+
 --- Activates when the player clicks ask for seks on the chosen target
 ---@param worldobjects table of world objects nearby the player
 ---@param contextMenu any injected from ZomboLewdContextMenu, can access ZomboLewd functionalities with this
 ---@param requestor IsoPlayer of the player
 ---@param target IsoPlayer of the asked target
-local function onAskForSex(worldobjects, contextMenu, requestor, target)
+---@param playerRole "Give"|"Receive"
+local function onAskForSex(worldobjects, contextMenu, requestor, target, tags, playerRole)
 	local isMainHeroFemale = requestor:isFemale()
 	local isTargetFemale = target:isFemale()
 	local maleCount, femaleCount = 0, 0
@@ -33,12 +45,34 @@ local function onAskForSex(worldobjects, contextMenu, requestor, target)
 		femaleCount = 1
 	end
 
+	table.insert(tags, "Sex")
+
+	local tagBlacklist = {"Defeated"}
+
+	local criteria = {
+		[1] = {}, -- requestor (i.e., player)
+		[2] = {} -- target
+	}
+	if playerRole == "Give" then
+		criteria[1]["top"] = true
+		criteria[2]["bottom"] = true
+	else
+		criteria[1]["bottom"] = true
+		criteria[2]["top"] = true
+	end
+
 	--- Choose random animation as a test
-	local animationList = contextMenu.Client.AnimationUtils:getAnimations(2, maleCount, femaleCount, {"Sex"})
+	local animationList = contextMenu.Client.AnimationUtils:getAnimations(2, maleCount, femaleCount, tags, tagBlacklist, true)
+	if #animationList == 0 then
+		print(string.format("ZomboLewd - Could not find animations"))
+		return
+	end
+
 	local index = ZombRand(1, #animationList + 1)
 	local chosenAnimation = animationList[index]
 
-	contextMenu.Client.AnimationHandler.Play(worldobjects, {requestor, target}, chosenAnimation)
+
+	contextMenu.Client.AnimationHandler.Play(worldobjects, {requestor, target}, chosenAnimation, nil, nil, nil, criteria)
 end
 
 --- Creates a ask for seks context menu
@@ -58,8 +92,30 @@ return function(ContextMenu, playerObj, context, worldobjects)
 	end
 
 	--- Check if we have moused over a IsoPlayer
-	if clickedPlayer then
-		--- Create an option in the right-click menu, and then creates a submenu for that
-		context:addOption(getText("ContextMenu_Ask_For_Sex"), worldobjects, onAskForSex, ContextMenu, playerObj, clickedPlayer)
+	if not clickedPlayer then return end
+
+	--- Create "Ask for Sex" option
+	local optionAskForSex = context:addOption(getText("ContextMenu_Ask_For_Sex"), worldobjects)
+
+	-- Nest Role options within "Ask for Sex"
+	local menuRole = ISContextMenu:getNew(context)
+	context:addSubMenu(optionAskForSex, menuRole)
+
+	-- Add role options
+	for _, role in ipairs(roles) do
+		local optionRole = menuRole:addOption(getText("ContextMenu_" .. role), worldobjects)
+		local menuPosition = ISContextMenu:getNew(context)
+		context:addSubMenu(optionRole, menuPosition)
+
+		-- For each role, nest Position options
+		for _, position in ipairs(positions) do
+			local optionPosition = menuRole:addOption(getText("ContextMenu_" .. position), worldobjects, onAskForSex, ContextMenu, playerObj, clickedPlayer, {position}, role)
+
+			-- Block vaginal option if both characters are male
+			-- Better to build a table of options dependent on the genders rather than account for it after
+			if position == "Vaginal" and not playerObj:isFemale() and not clickedPlayer:isFemale() then
+				optionPosition.notAvailable = true
+			end
+		end
 	end
 end
