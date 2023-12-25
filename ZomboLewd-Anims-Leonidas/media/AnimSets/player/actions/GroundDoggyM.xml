@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animNode>
+	<m_Name>GroundDoggyM</m_Name>
+	<m_AnimName>Bob_Ground_Doggy_M</m_AnimName>
+	<m_deferredBoneAxis>Y</m_deferredBoneAxis>
+	<m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
+	<m_SpeedScale>2.5</m_SpeedScale>
+	<m_BlendTime>0.10</m_BlendTime>
+	<m_Conditions>
+		<m_Name>PerformingAction</m_Name>
+		<m_Type>STRING</m_Type>
+		<m_StringValue>GroundDoggyM</m_StringValue>
+	</m_Conditions>
+	<m_Events>
+		<m_EventName>Cum</m_EventName>
+		<m_TimePc>End</m_TimePc>
+		<m_ParameterValue></m_ParameterValue>
+	</m_Events>
+	<m_Events>
+		<m_EventName>Slap</m_EventName>
+		<m_TimePc>0.0</m_TimePc>
+		<m_ParameterValue></m_ParameterValue>
+	</m_Events>
+		<m_Events>
+		<m_EventName>Slap</m_EventName>
+		<m_TimePc>0.5</m_TimePc>
+		<m_ParameterValue></m_ParameterValue>
+	</m_Events>
+	<m_SubStateBoneWeights>
+		<boneName>Dummy01</boneName>
+		<weight>1.0</weight>
+	</m_SubStateBoneWeights>
+</animNode>
