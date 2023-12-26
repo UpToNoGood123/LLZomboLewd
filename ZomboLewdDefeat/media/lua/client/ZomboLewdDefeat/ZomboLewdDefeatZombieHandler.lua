@@ -103,7 +103,7 @@ local function attemptToDefeatTarget(zombie, target)
 	local zombieIsFemale = zombie:isFemale()
 
 	--- Only straight sex for now
-	if isMainHeroFemale == zombieIsFemale then return end
+	-- if isMainHeroFemale == zombieIsFemale then return end
 	if target:getModData().zomboLewdSexScene then return end
 	if target:getModData().dontDefeat then return end
 
@@ -119,22 +119,14 @@ local function attemptToDefeatTarget(zombie, target)
 			local dummy = ZomboLewd.ZombieHandler:convertZombieToSurvivor(zombie)
 			dummy:getModData().dontDefeat = true
 
-			if isMainHeroFemale and zombieIsFemale then
-				--- Lesbian
-				maleCount = 0
-				femaleCount = 2
-			elseif isMainHeroFemale == false and zombieIsFemale == false then
-				--- Gay
-				maleCount = 2
-				femaleCount = 0
-			else
-				--- Straight
-				maleCount = 1
-				femaleCount = 1
-			end
-		
+			-- Compose actor data list
+			local actors = {
+				{object = zombie, role="Give"},
+				{object = target}
+			}
 			--- Choose random animation as a test
-			local animationList = ZomboLewd.AnimationUtils:getAnimations(2, maleCount, femaleCount, {"Sex", "Defeated"}, nil, true)
+			local animationList = ZomboLewd.AnimationUtils:getAnimations(actors, {"Sex", "Defeated"}, nil, true)
+			if #animationList == 0 then return end
 			local index = ZombRand(1, #animationList + 1)
 			local chosenAnimation = animationList[index]
 

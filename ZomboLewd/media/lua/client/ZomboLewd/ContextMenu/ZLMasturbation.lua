@@ -16,8 +16,7 @@ local ipairs = ipairs
 ---@param context unknown menu object to be filled for
 ---@param worldobjects table of world objects nearby the player
 return function(ContextMenu, playerObj, context, worldobjects)
-	local isFemale = playerObj:isFemale()
-	local animationList = ContextMenu.Client.AnimationUtils:getAnimations(1, isFemale and 0 or 1, isFemale and 1 or 0, {"Masturbation"})
+	local animationList = ContextMenu.Client.AnimationUtils:getAnimations({{object=playerObj}}, {"Masturbation"})
 
 	--- Create an option in the right-click menu, and then creates a submenu for that
 	local masturbateOption = context:addOption(getText("ContextMenu_Masturbate"), worldobjects)
@@ -26,7 +25,7 @@ return function(ContextMenu, playerObj, context, worldobjects)
 
 	--- Start creating our submenus based on the player's gender
 	for i = 1, #animationList do
-		local animation = animationList[i]
+		local animation = animationList[i].animation
 		local contextMenu_translate_text = string.format("ContextMenu_%s%s", animation.prefix, animation.id)
 		local text = getText(contextMenu_translate_text)
 		
@@ -39,7 +38,7 @@ return function(ContextMenu, playerObj, context, worldobjects)
 			toolTip:setVisible(false)
 
 			--- Create the new sub option
-			local animationOption = masturbationSubMenu:addOption(text, worldobjects, ContextMenu.Client.AnimationHandler.Play, {playerObj}, animation)
+			local animationOption = masturbationSubMenu:addOption(text, worldobjects, ContextMenu.Client.AnimationHandler.Play, {playerObj}, animationList[i])
 			animationOption.toolTip = toolTip
 		else
 			print(string.format("Missing Text: %s", contextMenu_translate_text))

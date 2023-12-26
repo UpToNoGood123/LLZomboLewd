@@ -7,6 +7,7 @@ table.insert(ZomboLewdAnimationData, {
 	actors = {
 		{
 			gender = "Female",
+			role = "Receive",
 			stages = {
 				{
 					perform = "SitFuckF",
@@ -16,6 +17,7 @@ table.insert(ZomboLewdAnimationData, {
 		},
 		{
 			gender = "Male",
+			role = "Give",
 			stages = {
 				{
 					perform = "SitFuckM",

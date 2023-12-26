@@ -37,12 +37,11 @@ ISAnimationAction = ISBaseTimedAction:derive("ISZomboLewdAnimationAction")
 --- Plays an animation using the given animation data
 ---@param worldobjects? unknown[] an array of all nearby objects, usually returned through a contextMenu
 ---@param actors IsoPlayer[] an array of actors to be played in this scene. Must be IsoPlayer types. First actor will usually be the position where the act takes place
----@param animationData unknown the animation object passed from AnimationUtils:getAnimations()
+---@param animationData {animation: ZLAnimationData, actorToPosition: number[]} the animation table passed from AnimationUtils:getAnimations()
 ---@param disableCancel? boolean: prevents cancellation of this action if set to true (for example, non-consensual actions)
 ---@param disableWalk? boolean: disables the initial walk of the animation (actors will teleport to eachother instantly for the scene)
 ---@param callbacks? {WaitToStart: fun(action: ZLAnimationAction), Update: fun(action: ZLAnimationAction), Perform: fun(action: ZLAnimationAction), Stop: fun(action: ZLAnimationAction), Start: fun(action: ZLAnimationAction)}
----@param slotCriteria? table<string, boolean>[]
-function AnimationHandler.Play(worldobjects, actors, animationData, disableCancel, disableWalk, callbacks, slotCriteria)
+function AnimationHandler.Play(worldobjects, actors, animationData, disableCancel, disableWalk, callbacks)
 	disableWalk = disableWalk or false
 
 	if #actors < 1 then return end
@@ -63,51 +62,11 @@ function AnimationHandler.Play(worldobjects, actors, animationData, disableCance
 	local facing = actors[1]:getDir()
 	local otherActions = {}
 
-	--- Cache the available actor positions
-	local availablePositions = {} do
-		for _, actor in ipairs(animationData.actors) do
-			table.insert(availablePositions, actor)
-		end
-	end
-
 	for actor_i, actor in ipairs(actors) do
-		local isFemale = actor:isFemale()
-		local bestRole
-		local bestRoleData = {
-			i = 0,
-			metric = -1,
-		}
-		
-		--- Check for a valid position in the animation dependent on gender
-		for i = #availablePositions, 1, -1 do
-			local canUsePosition = true
+		local position_i = animationData.actorToPosition[actor_i]
+		local position = animationData.animation.actors[position_i]
 
-			--- If its a male animation, prevent them from playing this animation if female
-			if isFemale and availablePositions[i].gender == "Male" then
-				canUsePosition = false
-			end
-
-			if canUsePosition then
-				-- Check if position is a best fit
-				local metric = 0
-				for _, criteria in ipairs(availablePositions[i].criteria) do
-					if slotCriteria and slotCriteria[actor_i][criteria] then
-						metric = metric + 1
-					end
-				end
-
-				-- Pick this position if its better
-				if metric > bestRoleData.metric then
-					bestRoleData.metric = metric
-					bestRoleData.i = i
-				end
-			end
-		end
-
-		-- Select best position for actor
-		bestRole = table.remove(availablePositions, bestRoleData.i)
-
-		for j, stage in ipairs(bestRole.stages) do
+		for j, stage in ipairs(position.stages) do
 			otherActions[j] = otherActions[j] or {}
 
 			--- Create animation data
@@ -120,7 +79,7 @@ function AnimationHandler.Play(worldobjects, actors, animationData, disableCance
 			action.waitingStarted = false
 			action.callbacks = callbacks
 			action.otherActions = #actors > 1 and otherActions[j]
-			action.isFinalStage = j == #bestRole.stages -- assumes every actor has the same number of stages
+			action.isFinalStage = j == #position.stages -- assumes every actor has the same number of stages
 			action.originalTurnDelta = actor:getTurnDelta()
 
 			if disableCancel == true then

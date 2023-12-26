@@ -27,38 +27,19 @@ local positions = {
 ---@param target IsoPlayer of the asked target
 ---@param playerRole "Give"|"Receive"
 local function onAskForSex(worldobjects, contextMenu, requestor, target, tags, playerRole)
-	local isMainHeroFemale = requestor:isFemale()
-	local isTargetFemale = target:isFemale()
-	local maleCount, femaleCount = 0, 0
-
-	if isMainHeroFemale and isTargetFemale then
-		--- Lesbian
-		maleCount = 0
-		femaleCount = 2
-	elseif isMainHeroFemale == false and isTargetFemale == false then
-		--- Gay
-		maleCount = 2
-		femaleCount = 0
-	else
-		--- Straight
-		maleCount = 1
-		femaleCount = 1
-	end
+	local targetRole = (playerRole == "Give") and "Receive" or "Give"
 
 	table.insert(tags, "Sex")
 
 	local tagBlacklist = {"Defeated"}
 
-	local criteria = {
-		[1] = {}, -- requestor (i.e., player)
-		[2] = {} -- target
+	local actorData = {
+		{object = requestor, role = playerRole},
+		{object = target, role = targetRole}
 	}
-	local targetRole = (playerRole == "Give") and "Receive" or "Give"
-	criteria[1][playerRole] = true
-	criteria[2][targetRole] = true
 
 	--- Choose random animation as a test
-	local animationList = contextMenu.Client.AnimationUtils:getAnimations(2, maleCount, femaleCount, tags, tagBlacklist, true)
+	local animationList = contextMenu.Client.AnimationUtils:getAnimations(actorData, tags, tagBlacklist, true)
 	if #animationList == 0 then
 		print(string.format("ZomboLewd - Could not find animations"))
 		return
@@ -67,8 +48,7 @@ local function onAskForSex(worldobjects, contextMenu, requestor, target, tags, p
 	local index = ZombRand(1, #animationList + 1)
 	local chosenAnimation = animationList[index]
 
-
-	contextMenu.Client.AnimationHandler.Play(worldobjects, {requestor, target}, chosenAnimation, nil, nil, nil, criteria)
+	contextMenu.Client.AnimationHandler.Play(worldobjects, {requestor, target}, chosenAnimation)
 end
 
 --- Creates a ask for seks context menu
