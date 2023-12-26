@@ -11,21 +11,6 @@
 		<m_Type>STRING</m_Type>
 		<m_StringValue>GroundFuckM</m_StringValue>
 	</m_Conditions>
-	<m_Events>
-		<m_EventName>Cum</m_EventName>
-		<m_TimePc>End</m_TimePc>
-		<m_ParameterValue></m_ParameterValue>
-	</m_Events>
-	<m_Events>
-		<m_EventName>Slap</m_EventName>
-		<m_TimePc>0.0</m_TimePc>
-		<m_ParameterValue></m_ParameterValue>
-	</m_Events>
-		<m_Events>
-		<m_EventName>Slap</m_EventName>
-		<m_TimePc>0.5</m_TimePc>
-		<m_ParameterValue></m_ParameterValue>
-	</m_Events>
 	<m_SubStateBoneWeights>
 		<boneName>Dummy01</boneName>
 		<weight>1.0</weight>
