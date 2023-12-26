@@ -6,7 +6,8 @@ table.insert(ZomboLewdAnimationData, {
 	tags = {"Missionary", "Sex", "MF", "Vaginal", "Anal", "Defeated"},
 	actors = {
 		{
-			criteria = {"Receive"},
+			role = "Receive",
+			role = "Receive",
 			stages = {
 				{
 					perform = "GroundMissionaryF",
@@ -16,7 +17,7 @@ table.insert(ZomboLewdAnimationData, {
 		},
 		{
 			gender = "Male",
-			criteria = {"Give"},
+			role = "Give",
 			stages = {
 				{
 					perform = "GroundMissionaryM",

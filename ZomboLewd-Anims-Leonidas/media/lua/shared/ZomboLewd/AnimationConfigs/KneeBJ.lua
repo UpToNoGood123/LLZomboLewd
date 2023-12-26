@@ -3,10 +3,10 @@ require "ZomboLewd/ZomboLewdConfig" --- Always include this at the top to forcel
 table.insert(ZomboLewdAnimationData, {
 	prefix = "ZomboLewd_",
 	id = "KneeBJ",
-	tags = {"Oral", "Sex", "MF"},
+	tags = {"Oral", "Sex", "MF", "Blowjob"},
 	actors = {
 		{
-			criteria = {"Give"},
+			role = "Give",
 			stages = {
 				{
 					perform = "KneeBJF",
@@ -16,7 +16,7 @@ table.insert(ZomboLewdAnimationData, {
 		},
 		{
 			gender = "Male",
-			criteria = {"Receive"},
+			role = "Receive",
 			stages = {
 				{
 					perform = "KneeBJM",

@@ -7,6 +7,7 @@ table.insert(ZomboLewdAnimationData, {
 	actors = {
 		{
 			gender = "Female",
+			role = "Receive",
 			stages = {
 				{
 					perform = "nominal_MF_LegUpMissionary_F",
@@ -16,6 +17,7 @@ table.insert(ZomboLewdAnimationData, {
 		},
 		{
 			gender = "Male",
+			role = "Give",
 			stages = {
 				{
 					perform = "nominal_MF_LegUpMissionary_M",
