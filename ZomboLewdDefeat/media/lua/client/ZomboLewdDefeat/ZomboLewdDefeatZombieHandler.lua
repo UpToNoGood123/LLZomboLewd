@@ -49,8 +49,8 @@ local function checkForClothingDamage(zombie, target)
 	--- For some reason PZ can return nil for wornItems
 	if wornItems then
 		--- Loop through the character's currently equipped items
-		for i = 1, wornItems:size() do
-			local wornItem = wornItems:get(i - 1) --- Get the current worn item
+		for i = wornItems:size()-1, 0, -1 do
+			local wornItem = wornItems:get(i) --- Get the current worn item
 
 			if wornItem then
 				local item = wornItem:getItem() --- Receive item data
