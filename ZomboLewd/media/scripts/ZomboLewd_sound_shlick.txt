@@ -1,0 +1,91 @@
+module Base
+{
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/00.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/01.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/02.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/03.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/04.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/05.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/06.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/07.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/08.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/09.wav,
+		}
+	}
+	sound ZomboLewdShlick
+	{
+		category = Player,
+		clip
+		{
+			file = media/sound/ZomboLewd/Shlick/10.wav,
+		}
+	}
+}
