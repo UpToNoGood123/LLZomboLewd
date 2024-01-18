@@ -2,15 +2,23 @@ require "ZomboLewd/ZomboLewdConfig" --- Always include this at the top to forcel
 
 table.insert(ZomboLewdAnimationData, {
 	prefix = "Nominal_",
-	id = "Quick_Fingering",
-	tags = {"Masturbation", "Solo", "Quick"},
+	id = "Fingering",
+	tags = {"Masturbation", "Solo", "Standing"},
 	actors = {
 		{
 			gender = "Female",
 			stages = {
 				{
+					perform = "nominal_F_RegularFingering",
+					duration = 150
+				},
+                {
+					perform = "nominal_F_RelaxedFingering",
+					duration = 900
+				},
+                {
 					perform = "nominal_F_QuickFingering",
-					duration = 700
+					duration = 300
 				}
 			}
 		},

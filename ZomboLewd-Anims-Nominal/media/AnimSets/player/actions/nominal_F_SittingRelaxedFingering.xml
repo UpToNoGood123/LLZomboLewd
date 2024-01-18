@@ -4,7 +4,7 @@
 	<m_AnimName>nominal_F_SittingRelaxedFingering</m_AnimName>
 	<m_deferredBoneAxis>Y</m_deferredBoneAxis>
 	<m_SyncTrackingEnabled>false</m_SyncTrackingEnabled>
-	<m_SpeedScale>1.05</m_SpeedScale>
+	<m_SpeedScale>2.10</m_SpeedScale>
 	<m_BlendTime>0.10</m_BlendTime>
 	<m_Conditions>
 		<m_Name>PerformingAction</m_Name>
