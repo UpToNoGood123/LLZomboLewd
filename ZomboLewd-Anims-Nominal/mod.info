@@ -4,3 +4,4 @@ id=NominalAnimationPackVol1
 description=Extension for ZomboLewd that adds 15 new animations.
 url=
 versionMin=41.1
+require=ZomboLewdFramework

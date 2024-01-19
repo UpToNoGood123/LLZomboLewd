@@ -1,0 +1,7 @@
+name=Zombolewd: Basic Animations
+poster=poster.png
+id=ZomboLewdAnimsBase
+description=ZomboLewd Animations that were previously coupled into the framework
+url=
+versionMin=41.1
+require=ZomboLewdFramework
