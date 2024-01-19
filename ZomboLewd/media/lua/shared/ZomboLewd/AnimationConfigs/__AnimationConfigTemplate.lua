@@ -20,28 +20,28 @@ require "ZomboLewd/ZomboLewdConfig" --- Always include this at the top to forcel
 				actual animation length itself, the animation will loop (useful if you want to make a looping animation without animating the entire thing)
 ]]
 
-table.insert(ZomboLewdAnimationData, {
-	prefix = "Prefix_",
-	id = "Sex_Act_Name",
-	tags = {"Masturbation", "MyTag"},
-	actors = {
-		{
-			gender = "Female",
-			stages = {
-				{
-					perform = "ANIMATION_STRING_NAME",
-					duration = 300
-				}
-			}
-		},
-		{
-			gender = "Male",
-			stages = {
-				{
-					perform = "ANIMATION_STRING_NAME",
-					duration = 300
-				}
-			}
-		}
-	}
-})
+-- table.insert(ZomboLewdAnimationData, {
+-- 	prefix = "Prefix_",
+-- 	id = "Sex_Act_Name",
+-- 	tags = {"Masturbation", "MyTag"},
+-- 	actors = {
+-- 		{
+-- 			gender = "Female",
+-- 			stages = {
+-- 				{
+-- 					perform = "ANIMATION_STRING_NAME",
+-- 					duration = 300
+-- 				}
+-- 			}
+-- 		},
+-- 		{
+-- 			gender = "Male",
+-- 			stages = {
+-- 				{
+-- 					perform = "ANIMATION_STRING_NAME",
+-- 					duration = 300
+-- 				}
+-- 			}
+-- 		}
+-- 	}
+-- })

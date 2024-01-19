@@ -1,4 +1,6 @@
 ContextMenu_EN = {
+	ContextMenu_Masturbate = "Masturbate",
+
 	ContextMenu_Ask_For_Sex = "Ask to have sex",
 	ContextMenu_Give = "Give",
 	ContextMenu_Receive = "Receive",

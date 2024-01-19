@@ -2,7 +2,7 @@ require "ZomboLewd/ZomboLewdConfig" --- Always include this at the top to forcel
 
 table.insert(ZomboLewdAnimationData, {
 	prefix = "Nominal_",
-	id = "Fingering",
+	id = "Standing_Fingering",
 	tags = {"Masturbation", "Solo", "Standing"},
 	actors = {
 		{
