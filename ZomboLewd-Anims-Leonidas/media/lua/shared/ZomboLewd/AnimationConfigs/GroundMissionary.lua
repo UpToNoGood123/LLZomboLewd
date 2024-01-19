@@ -7,7 +7,6 @@ table.insert(ZomboLewdAnimationData, {
 	actors = {
 		{
 			role = "Receive",
-			role = "Receive",
 			stages = {
 				{
 					perform = "GroundMissionaryF",
