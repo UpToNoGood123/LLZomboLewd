@@ -1,0 +1,7 @@
+ContextMenu_EN = {
+	ContextMenu_Masturbate = "Masturbate",
+	ContextMenu_Masturbation_FingerPussy = "Finger Pussy",
+	ContextMenu_Masturbation_FingerAss = "Finger Ass",
+	ContextMenu_Masturbation_FingerBoth = "Finger Both",
+	ContextMenu_Masturbation_StrokeCock = "Stroke Cock",
+}

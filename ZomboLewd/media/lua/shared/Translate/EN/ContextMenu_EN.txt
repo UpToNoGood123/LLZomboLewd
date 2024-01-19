@@ -1,10 +1,4 @@
 ContextMenu_EN = {
-	ContextMenu_Masturbate = "Masturbate",
-	ContextMenu_Masturbation_FingerPussy = "Finger Pussy",
-	ContextMenu_Masturbation_FingerAss = "Finger Ass",
-	ContextMenu_Masturbation_FingerBoth = "Finger Both",
-	ContextMenu_Masturbation_StrokeCock = "Stroke Cock",
-
 	ContextMenu_Ask_For_Sex = "Ask to have sex",
 	ContextMenu_Give = "Give",
 	ContextMenu_Receive = "Receive",
